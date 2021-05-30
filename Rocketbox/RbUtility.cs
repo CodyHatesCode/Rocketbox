@@ -6,6 +6,12 @@ namespace Rocketbox
     internal static class RbUtility
     {
         /// <summary>
+        /// Constants used by the About dialog
+        /// </summary>
+        internal const string RB_VERSION = "1.0.0";
+        internal const string RB_BUILD_DATE = "2021-05-30";
+
+        /// <summary>
         /// Gets the keyword from a command string
         /// </summary>
         /// <param name="input">The command string</param>

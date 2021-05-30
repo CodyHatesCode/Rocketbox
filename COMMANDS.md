@@ -30,6 +30,10 @@ Most of the search engines below have their entire name available as a keyword, 
 - **Internet Archive**: *ia*, *intarc*
 -- **Wayback Machine**: *wb*
 
+### Searching from clipboard
+
+Rocketbox can use text from the clipboard as a search term. To search using the clipboard, above keywords can be chained onto the **c** or **cb** keyword. For example, to search copied text in Google, use **c gl**.
+
 ## Calculator
 
 Rocketbox can perform math on-the-fly.
@@ -44,7 +48,7 @@ Rocketbox can convert between different units of measurement.
 
 **Syntax**: *[keyword] [unit] [any number of words] [unit]*
 
-**Keywords**: *convert*, *con*, *cv*, *c*
+**Keywords**: *convert*, *con*, *cv*
 
 The following units are included, and can be referenced by various short forms including their official symbols.
 
@@ -121,11 +125,19 @@ Syntax: *[keyword] [input language] [output language] [any number of words]*
 
 Most languages on Google Translate are available and can be referenced by their full name, ISO two-letter language code, or various logical short forms.
 
-## Closing Rocketbox background app
+## System Commands
+
+### Closing Rocketbox background app
 
 **Syntax**: *exit*
 
 Rocketbox runs in the background, which is how it responds to the activation hotkey. Running this command will close it entirely.
+
+### About dialog
+
+**Syntax**: *about*
+
+This command opens the About dialog, showing version and license info.
 
 ## Custom Search Packs
 

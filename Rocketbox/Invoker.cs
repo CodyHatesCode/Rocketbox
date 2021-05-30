@@ -54,10 +54,16 @@ namespace Rocketbox
             // run through generic commands
             switch(Keyword)
             {
+                case "ABOUT":
+                    _currentCmd = new AboutDialogCommand();
+                    break;
+                case "C":
+                case "CB":
+                    _currentCmd = new ClipboardSearchCommand();
+                    break;
                 case "CONVERT":
                 case "CON":
                 case "CV":
-                case "C":
                     _currentCmd = new UnitConversionCommand();
                     break;
                 case "TRANSLATE":
