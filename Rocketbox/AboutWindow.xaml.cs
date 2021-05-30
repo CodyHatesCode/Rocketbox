@@ -27,7 +27,7 @@ namespace Rocketbox
             lblVersion.Content += string.Format("v{0} ({1})", RbUtility.RB_VERSION, RbUtility.RB_BUILD_DATE);
 
             tbLicenseInfo.Text = File.ReadAllText("LICENSE");
-            tbAcknowledgements.Text = File.ReadAllText("icons/LICENSE.txt");
+            tbThirdPartyLicenses.Text = File.ReadAllText("LICENSE-THIRD-PARTY");
 
             lblLink.Click += (sender, args) => { new ShellCommand(lblLink.NavigateUri.ToString()).Execute(string.Empty); this.Close(); };
             this.KeyDown += (sender, args) => { if (args.Key == Key.Escape) this.Close(); };

@@ -5,19 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rocketbox"
         mc:Ignorable="d"
-        Title="Rocketbox" Height="420" Width="600" ResizeMode="NoResize" Background="#00051C" Top="20" Left="20" WindowStyle="None" Opacity="0.85" AllowsTransparency="True">
+        Title="Rocketbox" Height="650" Width="600" ResizeMode="NoResize" Background="#00051C" Top="20" Left="20" WindowStyle="None" Opacity="0.85" AllowsTransparency="True">
     <Grid>
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="43*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
             <Label Name="lblVersion" Padding="5 5 5 0" Content="Rocketbox " Foreground="White" FontWeight="Bold" FontSize="18" />
             <TextBlock Padding="5 0 5 0">
                 <Hyperlink Name="lblLink" Foreground="White" NavigateUri="https://github.com/CodyWritesCode/Rocketbox">github.com/CodyWritesCode</Hyperlink>
             </TextBlock>
             <Label Padding="5 0 5 5" Content="Press Escape to close" Foreground="White" FontSize="10" />
             <Separator />
-            <Label Padding="5 0 5 0" Content="License Info" Foreground="White" FontSize="14" />
-            <TextBox TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Padding="5 0 5 5" Foreground="White" Background="Black" Name="tbLicenseInfo" Height="150" />
-            <Label Padding="5 0 5 0" Content="Other Acknowledgements" Foreground="White" FontSize="14" />
-            <TextBox TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Padding="5 0 5 5" Foreground="White" Background="Black" Name="tbAcknowledgements" Height="150" />
+            <Label Padding="5 10 5 10" Content="Software License" Foreground="White" FontSize="14" />
+            <TextBox Name="tbLicenseInfo"  FontFamily="Lucida Console" TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Padding="5 0 5 5" Foreground="White" Background="Black" Height="250" />
+            <Label Padding="5 10 5 10" Content="Third-Party Licenses" Foreground="White" FontSize="14" />
+            <TextBox Name="tbThirdPartyLicenses" FontFamily="Lucida Console" TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Padding="5 0 5 5" Foreground="White" Background="Black" Height="250" />
         </StackPanel>
     </Grid>
 </Window>

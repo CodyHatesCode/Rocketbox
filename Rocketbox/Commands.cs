@@ -96,7 +96,7 @@ namespace Rocketbox
 
         public bool Execute(string arguments)
         {
-            if(arguments.Trim() == string.Empty)
+            if(arguments.Trim() == string.Empty || _command == null)
             {
                 return false;
             }
@@ -271,7 +271,7 @@ namespace Rocketbox
             {
                 // Math is processed by ncalc
                 Expression expr = new Expression(arguments);
-                _result = Convert.ToDecimal(expr.Evaluate()).ToString();
+                _result = Convert.ToDouble(expr.Evaluate()).ToString();
             }
             catch (Exception)
             {
