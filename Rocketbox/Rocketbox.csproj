@@ -73,16 +73,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AboutWindow.xaml.cs">
+    <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands.cs" />
+    <Compile Include="Commands\System\AboutDialogCommand.cs" />
+    <Compile Include="Commands\Utility\CalculatorCommand.cs" />
+    <Compile Include="Commands\Search\ClipboardSearchCommand.cs" />
+    <Compile Include="Commands\System\ExitCommand.cs" />
+    <Compile Include="Commands\TimeDate\FromUnixTimeCommand.cs" />
+    <Compile Include="Commands\System\InstallPackCommand.cs" />
+    <Compile Include="Commands\IRbCommand.cs" />
+    <Compile Include="Commands\System\ListPackCommand.cs" />
+    <Compile Include="Commands\System\NullCommand.cs" />
+    <Compile Include="Commands\Search\SearchCommand.cs" />
+    <Compile Include="Commands\Utility\ShellCommand.cs" />
+    <Compile Include="Commands\TimeDate\TimeCommand.cs" />
+    <Compile Include="Commands\TimeDate\TimeCompareCommand.cs" />
+    <Compile Include="Commands\TimeDate\TimeDiffCommand.cs" />
+    <Compile Include="Commands\TimeDate\ToUnixTimeCommand.cs" />
+    <Compile Include="Commands\Search\TranslateCommand.cs" />
+    <Compile Include="Commands\System\UninstallPackCommand.cs" />
+    <Compile Include="Commands\Utility\UnitConversionCommand.cs" />
+    <Compile Include="Commands\TimeDate\UnixTimeCommand.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="RbData.cs" />
     <Compile Include="RbGlobals.cs" />
     <Compile Include="RbUtility.cs" />
     <Compile Include="Invoker.cs" />
-    <Page Include="AboutWindow.xaml">
+    <Page Include="Views\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,12 +135,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DefaultConversionUnits.json" />
-    <None Include="DefaultLanguages.json" />
-    <None Include="DefaultSearchEngines_uk.json" />
-    <None Include="DefaultSearchEngines_us.json" />
-    <None Include="DefaultSearchEngines_ca.json" />
-    <None Include="DefaultSearchEngines.json" />
+    <None Include="DefaultData\DefaultConversionUnits.json" />
+    <None Include="DefaultData\DefaultLanguages.json" />
+    <None Include="DefaultData\DefaultSearchEngines_uk.json" />
+    <None Include="DefaultData\DefaultSearchEngines_us.json" />
+    <None Include="DefaultData\DefaultSearchEngines_ca.json" />
+    <None Include="DefaultData\DefaultSearchEngines.json" />
     <None Include="LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -197,6 +215,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

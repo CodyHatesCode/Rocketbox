@@ -25,8 +25,9 @@ namespace Rocketbox
         private static string _dateFmt = "dddd, MMMM d, yyyy  ―  h:mm tt";
         internal static string DateFormat { get { return _dateFmt; } }
 
-        // Error message for failed database load
+        // Error messages
         internal const string DB_LOAD_ERR_MSG = "The Rocketbox database is missing or inaccessible. Certain features may not work properly. It is recommended that you replace this copy of Rocketbox.";
+        internal const string ALREADY_RUNNING_ERR_MSG = "Rocketbox is already running, or another application has reserved its hotkey (Windows Key + ~). Please close existing instances of Rocketbox or any other application that may interfere with it before attempting to launch it again.";
 
         // Relative path to where assets are stored
         internal const string ASSET_DIR = @"icons\";

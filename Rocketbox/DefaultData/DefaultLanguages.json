@@ -1,0 +1,622 @@
+﻿[
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b13"},
+        "Name": "English",
+        "Code": "en",
+        "Keywords": 
+        [
+            "ENGLISH",
+            "ENG",
+            "EN"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b14"},
+        "Name": "French",
+        "Code": "fr",
+        "Keywords": 
+        [
+            "FRENCH",
+            "FRE",
+            "FR"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b15"},
+        "Name": "Spanish",
+        "Code": "es",
+        "Keywords": 
+        [
+            "SPANISH",
+            "ESPANOL",
+            "SPAN",
+            "ES"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b16"},
+        "Name": "Italian",
+        "Code": "it",
+        "Keywords": 
+        [
+            "ITALIAN",
+            "IT"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b17"},
+        "Name": "Portuguese",
+        "Code": "pt",
+        "Keywords": 
+        [
+            "PORTUGUESE",
+            "PORT",
+            "PT"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b18"},
+        "Name": "Welsh",
+        "Code": "cy",
+        "Keywords": 
+        [
+            "WELSH",
+            "WEL",
+            "CY"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b19"},
+        "Name": "Irish",
+        "Code": "ga",
+        "Keywords": 
+        [
+            "IRISH",
+            "IRI",
+            "GA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1a"},
+        "Name": "German",
+        "Code": "de",
+        "Keywords": 
+        [
+            "GERMAN",
+            "DEUTSCH",
+            "DE"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1b"},
+        "Name": "Polish",
+        "Code": "pl",
+        "Keywords": 
+        [
+            "POLISH",
+            "PL"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1c"},
+        "Name": "Hungarian",
+        "Code": "hu",
+        "Keywords": 
+        [
+            "HUNGARIAN",
+            "HU"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1d"},
+        "Name": "Slovenian",
+        "Code": "sl",
+        "Keywords": 
+        [
+            "SLOVENIAN",
+            "SL"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1e"},
+        "Name": "Slovak",
+        "Code": "sk",
+        "Keywords": 
+        [
+            "SLOVAK",
+            "SK"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b1f"},
+        "Name": "Czech",
+        "Code": "cs",
+        "Keywords": 
+        [
+            "CZECH",
+            "CZE",
+            "CS"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b20"},
+        "Name": "Croatian",
+        "Code": "hr",
+        "Keywords": 
+        [
+            "CROATIAN",
+            "CRO",
+            "HR"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b21"},
+        "Name": "Greek",
+        "Code": "el",
+        "Keywords": 
+        [
+            "GREEK",
+            "EL"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b22"},
+        "Name": "Macedonian",
+        "Code": "mk",
+        "Keywords": 
+        [
+            "MACEDONIAN",
+            "MACE",
+            "MK"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b23"},
+        "Name": "Bosnian",
+        "Code": "bs",
+        "Keywords": 
+        [
+            "BOSNIAN",
+            "BOS",
+            "BS"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b24"},
+        "Name": "Serbian",
+        "Code": "sr",
+        "Keywords": 
+        [
+            "SERBIAN",
+            "SERB",
+            "SR"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b25"},
+        "Name": "Albanian",
+        "Code": "sq",
+        "Keywords": 
+        [
+            "ALBANIAN",
+            "ALB",
+            "SQ"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b26"},
+        "Name": "Romanian",
+        "Code": "RO",
+        "Keywords": 
+        [
+            "ROMANIAN",
+            "ROM",
+            "RO"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b27"},
+        "Name": "Estonian",
+        "Code": "et",
+        "Keywords": 
+        [
+            "ESTONIAN",
+            "ESTO",
+            "ET"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b28"},
+        "Name": "Latvian",
+        "Code": "lv",
+        "Keywords": 
+        [
+            "LATVIAN",
+            "LAT",
+            "LV"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b29"},
+        "Name": "Lithuanian",
+        "Code": "lt",
+        "Keywords": 
+        [
+            "LITHUANIAN",
+            "LIT",
+            "LITH",
+            "LT"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2a"},
+        "Name": "Georgian",
+        "Code": "ka",
+        "Keywords": 
+        [
+            "GEORGIAN",
+            "GEO",
+            "KA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2b"},
+        "Name": "Swedish",
+        "Code": "sv",
+        "Keywords": 
+        [
+            "SWEDISH",
+            "SWE",
+            "SV"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2c"},
+        "Name": "Norwegian",
+        "Code": "no",
+        "Keywords": 
+        [
+            "NORWEGIAN",
+            "NOR",
+            "NO"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2d"},
+        "Name": "Danish",
+        "Code": "da",
+        "Keywords": 
+        [
+            "DANISH",
+            "DAN",
+            "DA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2e"},
+        "Name": "Finnish",
+        "Code": "fi",
+        "Keywords": 
+        [
+            "FINNISH",
+            "FIN",
+            "FI"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b2f"},
+        "Name": "Icelandic",
+        "Code": "is",
+        "Keywords": 
+        [
+            "ICELANDIC",
+            "ICE",
+            "IS"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b30"},
+        "Name": "Russian",
+        "Code": "ru",
+        "Keywords": 
+        [
+            "RUSSIAN",
+            "RUS",
+            "RU"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b31"},
+        "Name": "Ukrainian",
+        "Code": "uk",
+        "Keywords": 
+        [
+            "UKRAINIAN",
+            "UK"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b32"},
+        "Name": "Bulgarian",
+        "Code": "bg",
+        "Keywords": 
+        [
+            "BULGARIAN",
+            "BUL",
+            "BG"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b33"},
+        "Name": "Belarusian",
+        "Code": "be",
+        "Keywords": 
+        [
+            "BELARUSIAN",
+            "BEL",
+            "BE"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b34"},
+        "Name": "Uzbek",
+        "Code": "uz",
+        "Keywords": 
+        [
+            "UZBEK",
+            "UZ"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b35"},
+        "Name": "Kazakh",
+        "Code": "kk",
+        "Keywords": 
+        [
+            "KAZAKH",
+            "KK"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b36"},
+        "Name": "Kyrgyz",
+        "Code": "ky",
+        "Keywords": 
+        [
+            "KYRGYZ",
+            "KY"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b37"},
+        "Name": "Tajik",
+        "Code": "tg",
+        "Keywords": 
+        [
+            "TAJIK",
+            "TAJ",
+            "TG"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b38"},
+        "Name": "Mongolian",
+        "Code": "mn",
+        "Keywords": 
+        [
+            "MONGOLIAN",
+            "MON",
+            "MN"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b39"},
+        "Name": "Chinese",
+        "Code": "zh-CN",
+        "Keywords": 
+        [
+            "CHINESE",
+            "MANDARIN",
+            "CN",
+            "ZH"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3a"},
+        "Name": "Japanese",
+        "Code": "ja",
+        "Keywords": 
+        [
+            "JAPANESE",
+            "JP"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3b"},
+        "Name": "Korean",
+        "Code": "ko",
+        "Keywords": 
+        [
+            "KOREAN",
+            "KO"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3c"},
+        "Name": "Thai",
+        "Code": "TH",
+        "Keywords": 
+        [
+            "THAI",
+            "TH"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3d"},
+        "Name": "Malay",
+        "Code": "ms",
+        "Keywords": 
+        [
+            "MALAY",
+            "MS"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3e"},
+        "Name": "Vietnamese",
+        "Code": "vi",
+        "Keywords": 
+        [
+            "VIETNAMESE",
+            "VIET",
+            "VI"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b3f"},
+        "Name": "Hindi",
+        "Code": "hi",
+        "Keywords": 
+        [
+            "HINDI",
+            "HIN",
+            "HI"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b40"},
+        "Name": "Punjabi",
+        "Code": "pa",
+        "Keywords": 
+        [
+            "PUNJABI",
+            "PA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b41"},
+        "Name": "Malayalam",
+        "Code": "ml",
+        "Keywords": 
+        [
+            "MALAYALAM",
+            "ML"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b42"},
+        "Name": "Indonesian",
+        "Code": "id",
+        "Keywords": 
+        [
+            "INDONESIAN",
+            "INDO",
+            "ID"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b43"},
+        "Name": "Filipino",
+        "Code": "tl",
+        "Keywords": 
+        [
+            "FILIPINO",
+            "FIL",
+            "TL"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b44"},
+        "Name": "Hawaiian",
+        "Code": "haw",
+        "Keywords": 
+        [
+            "HAWAIIAN",
+            "HAW"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b45"},
+        "Name": "Samoan",
+        "Code": "sm",
+        "Keywords": 
+        [
+            "SAMOAN",
+            "SAM",
+            "SM"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b46"},
+        "Name": "Turkish",
+        "Code": "tr",
+        "Keywords": 
+        [
+            "TURKISH",
+            "TURK",
+            "TR"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b47"},
+        "Name": "Arabic",
+        "Code": "ar",
+        "Keywords": 
+        [
+            "ARABIC",
+            "AR"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b48"},
+        "Name": "Armenian",
+        "Code": "hy",
+        "Keywords": 
+        [
+            "ARMENIAN",
+            "ARM",
+            "HY"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b49"},
+        "Name": "Persian",
+        "Code": "fa",
+        "Keywords": 
+        [
+            "PERSIAN",
+            "FA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b4a"},
+        "Name": "Hebrew",
+        "Code": "iw",
+        "Keywords": 
+        [
+            "HEBREW",
+            "IW"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b4b"},
+        "Name": "Latin",
+        "Code": "la",
+        "Keywords": 
+        [
+            "LATIN",
+            "LA"
+        ]
+    },
+    {
+        "_id": {"$oid": "60b5d7b6f668d12150133b4c"},
+        "Name": "Esperanto",
+        "Code": "eo",
+        "Keywords": 
+        [
+            "ESPERANTO",
+            "ESP",
+            "EO"
+        ]
+    }
+]

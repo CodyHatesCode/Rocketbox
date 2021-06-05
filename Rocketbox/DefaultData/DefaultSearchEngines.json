@@ -1,0 +1,86 @@
+﻿[
+	{
+		"Name":			"YouTube",
+		"Url_Prefix":	"https://www.youtube.com/results?search_query=",
+		"Aliases":		["YOUTUBE", "YT"],
+		"Icon":			"youtube.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Wikipedia",
+		"Url_Prefix":	"https://en.wikipedia.org/wiki/Special:Search?search=",
+		"Aliases":		["WIKIPEDIA", "WP"],
+		"Icon":			"wikipedia.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Reddit",
+		"Url_Prefix":	"https://old.reddit.com/search?restrict_sr=off&sort=relevance&t=all&feature=legacy_search&q=",
+		"Aliases":		["REDDIT"],
+		"Icon":			"reddit.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Subreddit",
+		"Url_Prefix":	"https://old.reddit.com/r/",
+		"Aliases":		["/R/", "R/", "SUBREDDIT", "SUB"],
+		"Icon":			"reddit.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Bing",
+		"Url_Prefix":	"https://www.bing.com/search?q=",
+		"Aliases":		["BING"],
+		"Icon":			"bing.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Twitter",
+		"Url_Prefix":	"https://twitter.com/search?f=tweets&vertical=default&q=",
+		"Aliases":		["TWITTER", "TW", "#"],
+		"Icon":			"twitter.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"GitHub",
+		"Url_Prefix":	"https://www.github.com/search?q=",
+		"Aliases":		["GH", "GITHUB"],
+		"Icon":			"github.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Stack Overflow",
+		"Url_Prefix":	"https://www.stackoverflow.com/search?q=",
+		"Aliases":		["STACKOVERFLOW", "SO"],
+		"Icon":			"stackoverflow.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Steam (Store)",
+		"Url_Prefix":	"https://store.steampowered.com/search/?snr=1_4_4__12&term=",
+		"Aliases":		["STEAM", "STM"],
+		"Icon":			"steam.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Steam (Community)",
+		"Url_Prefix": 	"https://steamcommunity.com/search/?text=",
+		"Aliases": 		[ "STEAMC", "SC" ],
+		"Icon":			"steam.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Internet Archive",
+		"Url_Prefix":	"https://archive.org/search.php?query=",
+		"Aliases":		[ "ARCHIVE", "INTARC", "IA" ],
+		"Icon":			"wayback.png",
+		"Collection":	"Default"
+	},
+	{
+		"Name":			"Wayback Machine",
+		"Url_Prefix":	"https://web.archive.org/web/*/",
+		"Aliases":		[ "WAYBACK", "WB" ],
+		"Icon":			"wayback.png",
+		"Collection":	"Default"
+	}
+]

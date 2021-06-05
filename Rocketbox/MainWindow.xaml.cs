@@ -31,13 +31,21 @@ namespace Rocketbox
             textConsole.Width = this.Width - 20;
             responseText.Width = this.Width - 64;
 
+            try
+            {
+                HotkeyManager.Current.AddOrReplace("ShowRb", Key.OemTilde, ModifierKeys.Windows, OnHotkey);
+            }
+            catch(HotkeyAlreadyRegisteredException e)
+            {
+                MessageBox.Show(RbGlobals.ALREADY_RUNNING_ERR_MSG, RbGlobals.APPLICATION_NAME, MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+            }
+
             _trayIcon = new System.Windows.Forms.NotifyIcon();
             _trayIcon.Icon = new Icon(RbGlobals.ASSET_DIR + RbGlobals.ICON_NAME);
             _trayIcon.Visible = true;
             _trayIcon.Click += (sender, e) => { this.Show(); };
             _trayIcon.ShowBalloonTip(5000, RbGlobals.APPLICATION_NAME, RbGlobals.LAUNCH_TOOLTIP_STRING, System.Windows.Forms.ToolTipIcon.Info);
-
-            HotkeyManager.Current.AddOrReplace("ShowRb", Key.OemTilde, ModifierKeys.Windows, OnHotkey);
 
             responseText.Text = string.Empty;
             textConsole.Text = string.Empty;

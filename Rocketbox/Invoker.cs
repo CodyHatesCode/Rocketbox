@@ -8,7 +8,7 @@ namespace Rocketbox
     internal static class Invoker
     {
         private static string _currentText;
-        private static RbCommand _currentCmd;
+        private static IRbCommand _currentCmd;
 
         internal static bool ShutdownNow { get; set; }
         
