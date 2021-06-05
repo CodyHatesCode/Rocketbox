@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -9,6 +10,8 @@ namespace Rocketbox
     {
         private long _epochValue;
         private string _dateString;
+
+        public List<string> Keywords { get; } = new List<string> { "UFROM" };
 
         public FromUnixTimeCommand() { }
 

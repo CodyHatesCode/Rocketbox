@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rocketbox</RootNamespace>
     <AssemblyName>Rocketbox</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -73,6 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\TimeDate\SubtractTimeCommand.cs" />
+    <Compile Include="Commands\TimeDate\AddTimeCommand.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -89,7 +91,6 @@
     <Compile Include="Commands\Utility\ShellCommand.cs" />
     <Compile Include="Commands\TimeDate\TimeCommand.cs" />
     <Compile Include="Commands\TimeDate\TimeCompareCommand.cs" />
-    <Compile Include="Commands\TimeDate\TimeDiffCommand.cs" />
     <Compile Include="Commands\TimeDate\ToUnixTimeCommand.cs" />
     <Compile Include="Commands\Search\TranslateCommand.cs" />
     <Compile Include="Commands\System\UninstallPackCommand.cs" />

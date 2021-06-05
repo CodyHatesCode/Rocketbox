@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
     internal class AboutDialogCommand : IRbCommand
     {
+        public List<string> Keywords { get; } = new List<string> { "ABOUT" };
+
         public AboutDialogCommand() { }
 
         public bool Execute(string arguments)

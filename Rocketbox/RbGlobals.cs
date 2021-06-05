@@ -35,5 +35,9 @@ namespace Rocketbox
         // Names of other important files in the Rocketbox directory
         internal const string LICENSE_FILE_NAME = "LICENSE";
         internal const string THIRD_PARTY_LICENSE_FILE_NAME = "LICENSE-THIRD-PARTY";
+
+        // Strings for certain commands
+        internal const string DATE_CALC_ERROR_STRING = "Cannot compute date/time.";
+        internal const string DATE_CALC_OUT_STRING = "Calculated date/time:   ";
     }
 }

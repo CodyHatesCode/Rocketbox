@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Rocketbox
@@ -9,6 +10,8 @@ namespace Rocketbox
     internal class ShellCommand : IRbCommand
     {
         private string _command;
+
+        public List<string> Keywords { get; } = new List<string>();
 
         internal ShellCommand(string command)
         {

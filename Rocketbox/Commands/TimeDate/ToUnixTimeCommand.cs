@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -10,6 +11,8 @@ namespace Rocketbox
         private DateTime _dt;
         private long _epochValue;
         private bool _goodConversion;
+
+        public List<string> Keywords { get; } = new List<string> { "UTO" };
 
         public bool Execute(string arguments)
         {

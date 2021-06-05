@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rocketbox
@@ -10,6 +11,8 @@ namespace Rocketbox
     {
         // chain a SearchCommand
         SearchCommand _command;
+
+        public List<string> Keywords { get; } = new List<string> { "C", "CB" };
 
         internal ClipboardSearchCommand() { }
 

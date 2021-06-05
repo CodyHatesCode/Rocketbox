@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Rocketbox
 {
@@ -63,6 +64,73 @@ namespace Rocketbox
             if(fields.Length != 3)
             {
                 return false;
+            }
+
+            return true;
+        }
+
+        internal static bool AddOrSubtractTime(string timeString, RbTimeDiffMode diffMode, out DateTime calcDate, out int beforeCEYear)
+        {
+            beforeCEYear = -1;
+
+            string[] parts = timeString.ToUpper().Split(' ');
+
+            calcDate = DateTime.Now;
+
+            foreach (string s in parts)
+            {
+                int diff;
+
+                try
+                {
+                    diff = int.Parse(Regex.Match(s, @"\d+").Value);
+                }
+                catch { return false; }
+
+                // whether we're adding to or subtracting from the current date/time
+                if(diffMode == RbTimeDiffMode.Subtract)
+                {
+                    diff = -diff;
+                }
+
+                if (s.EndsWith("S") || s.EndsWith("SEC") || s.EndsWith("SECOND") || s.EndsWith("SECONDS"))
+                {
+                    calcDate = calcDate.AddSeconds(diff);
+                }
+                if (s.EndsWith("MI") || s.EndsWith("MIN") || s.EndsWith("MINS") || s.EndsWith("MINUTE") || s.EndsWith("MINUTES"))
+                {
+                    calcDate = calcDate.AddMinutes(diff);
+                }
+                else if (s.EndsWith("H") || s.EndsWith("HR") || s.EndsWith("HRS") || s.EndsWith("HOUR") || s.EndsWith("HOURS"))
+                {
+                    calcDate = calcDate.AddHours(diff);
+                }
+                else if (s.EndsWith("D") || s.EndsWith("DAY") || s.EndsWith("DAYS"))
+                {
+                    calcDate = calcDate.AddDays(diff);
+                }
+                else if (s.EndsWith("MO") || s.EndsWith("MONTH") || s.EndsWith("MONTHS"))
+                {
+                    calcDate = calcDate.AddMonths(diff);
+                }
+                else if (s.EndsWith("Y") || s.EndsWith("YR") || s.EndsWith("YRS") || s.EndsWith("YEAR") || s.EndsWith("YEARS"))
+                {
+                    try
+                    {
+                        calcDate = calcDate.AddYears(diff);
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        if (diffMode == RbTimeDiffMode.Subtract)
+                        {
+                            beforeCEYear = -(DateTime.Now.Year + diff);
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
             }
 
             return true;

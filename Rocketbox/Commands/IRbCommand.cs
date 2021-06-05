@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -7,13 +8,29 @@ namespace Rocketbox
     /// </summary>
     internal interface IRbCommand
     {
-        // response string will be displayed in the text below the input box before the user sends the command
+        /// <summary>
+        /// The keywords which can trigger this command
+        /// </summary>
+        List<string> Keywords { get; }
+
+        /// <summary>
+        /// Gets the response text of the command
+        /// </summary>
+        /// <param name="arguments">The arguments of the command</param>
+        /// <returns>The text to be displayed underneath the input box</returns>
         string GetResponse(string arguments);
 
-        // runs the command - the boolean signals to the invoker whether Rocketbox should be closed or not
+        /// <summary>
+        /// Executes the indicated command
+        /// </summary>
+        /// <param name="arguments">The arguments of the command</param>
+        /// <returns>Whether the command executed successfully</returns>
         bool Execute(string arguments);
 
-        // gets the icon in the /icons directory, if any
+        /// <summary>
+        /// Gets the icon for this command
+        /// </summary>
+        /// <returns>The file name of the icon</returns>
         string GetIcon();
     }
 }

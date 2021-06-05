@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Rocketbox
 {
@@ -8,20 +10,25 @@ namespace Rocketbox
     internal static class Invoker
     {
         private static string _currentText;
+        private static List<IRbCommand> _registeredCommands;
         private static IRbCommand _currentCmd;
 
         internal static bool ShutdownNow { get; set; }
         
-        // easy way to access the keyword of the current command
+        /// <summary>
+        /// Keyword of the current text command
+        /// </summary>
         private static string Keyword
         {
             get
             {
-                return RbUtility.GetKeyword(_currentText);
+                return RbUtility.GetKeyword(_currentText).ToUpper();
             }
         }
 
-        // easy way to access the parameters of the current command
+        /// <summary>
+        /// Parameters of the current text command
+        /// </summary>
         private static string Parameters
         {
             get
@@ -30,8 +37,44 @@ namespace Rocketbox
             }
         }
 
+        /// <summary>
+        /// Registers the commands that can be executed by the Invoker
+        /// </summary>
+        internal static void RegisterCommands()
+        {
+            // SearchCommand, NullCommand, and ShellCommand are not "registered" conventionally, as they are special cases
+            _registeredCommands = new List<IRbCommand>()
+            {
+                // Search
+                new ClipboardSearchCommand(),
+                new TranslateCommand(),
 
-        // should be ran on every update before responding/executing
+                // System
+                new AboutDialogCommand(),
+                new ExitCommand(),
+                new InstallPackCommand(),
+                new ListPackCommand(),
+                new UninstallPackCommand(),
+
+                // TimeDate
+                new AddTimeCommand(),
+                new FromUnixTimeCommand(),
+                new SubtractTimeCommand(),
+                new TimeCommand(),
+                new TimeCompareCommand(),
+                new ToUnixTimeCommand(),
+                new UnixTimeCommand(),
+
+                // Utility
+                new CalculatorCommand(),
+                new UnitConversionCommand()
+            };
+        }
+
+        /// <summary>
+        /// Parses text and chooses the appropriate command
+        /// </summary>
+        /// <param name="command">The text of the command to be parsed</param>
         internal static void Invoke(string command)
         {
             ShutdownNow = false;
@@ -49,71 +92,21 @@ namespace Rocketbox
                 _currentCmd = new SearchCommand(matchingSearchEngines.First());
             }
 
-            // run through generic commands
-            switch(Keyword)
+            // if we did not find a search command, try the other commands
+            if(_currentCmd.GetType() == typeof(ShellCommand))
             {
-                case "ABOUT":
-                    _currentCmd = new AboutDialogCommand();
-                    break;
-                case "C":
-                case "CB":
-                    _currentCmd = new ClipboardSearchCommand();
-                    break;
-                case "CONVERT":
-                case "CON":
-                case "CV":
-                    _currentCmd = new UnitConversionCommand();
-                    break;
-                case "TRANSLATE":
-                case "TRANS":
-                case "TR":
-                    _currentCmd = new TranslateCommand();
-                    break;
-                case "=":
-                    _currentCmd = new CalculatorCommand();
-                    break;
-                case "TIME":
-                case "T":
-                    _currentCmd = new TimeCommand();
-                    break;
-                case "T+":
-                    _currentCmd = new TimeDiffCommand(RbTimeDiffMode.Add);
-                    break;
-                case "T-":
-                    _currentCmd = new TimeDiffCommand(RbTimeDiffMode.Subtract);
-                    break;
-                case "TS":
-                case "SINCE":
-                case "TU":
-                case "UNTIL":
-                   _currentCmd = new TimeCompareCommand();
-                    break;
-                case "UT":
-                    _currentCmd = new UnixTimeCommand();
-                    break;
-                case "UFROM":
-                    _currentCmd = new FromUnixTimeCommand();
-                    break;
-                case "UTO":
-                    _currentCmd = new ToUnixTimeCommand();
-                    break;
-                // ---------------------------------
-                case "EXIT":
-                    _currentCmd = new ExitCommand();
-                    break;
-                case "PACKS":
-                    _currentCmd = new ListPackCommand();
-                    break;
-                case "INSTALL":
-                    _currentCmd = new InstallPackCommand();
-                    break;
-                case "UNINSTALL":
-                    _currentCmd = new UninstallPackCommand();
-                    break;
+                var foundCommands = _registeredCommands.Where(c => c.Keywords.Contains(Keyword));
+                if(foundCommands.Count() > 0)
+                {
+                    _currentCmd = foundCommands.First();
+                }
             }
         }
 
-        // retrieves the string to be indicated below the text box before a command is sent
+        /// <summary>
+        /// Retrieves the string to be indicated below the text box before a command is sent
+        /// </summary>
+        /// <returns>Text returned by the command</returns>
         internal static string GetResponse()
         {
             if(_currentText.Trim() == string.Empty)
@@ -124,7 +117,10 @@ namespace Rocketbox
             return _currentCmd.GetResponse(Parameters);
         }
 
-        // runs the command
+        /// <summary>
+        /// Executes the command
+        /// </summary>
+        /// <returns>Whether the command was successful or not</returns>
         internal static bool Execute()
         {
             if(_currentText.Trim() == string.Empty)
@@ -135,7 +131,10 @@ namespace Rocketbox
             return _currentCmd.Execute(Parameters);
         }
 
-        // sets the command's icon, if any
+        /// <summary>
+        /// Obtains the icon from the command
+        /// </summary>
+        /// <returns>The file name of the icon to be displayed</returns>
         internal static string GetIcon()
         {
             if(_currentText.Trim() == string.Empty)

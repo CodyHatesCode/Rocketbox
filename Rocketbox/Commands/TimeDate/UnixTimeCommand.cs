@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -8,6 +9,8 @@ namespace Rocketbox
     internal class UnixTimeCommand : IRbCommand
     {
         private string _unixTimeString;
+
+        public List<string> Keywords { get; } = new List<string> { "UT" };
 
         public UnixTimeCommand() { }
 

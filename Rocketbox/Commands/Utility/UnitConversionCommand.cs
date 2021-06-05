@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rocketbox
@@ -14,6 +15,8 @@ namespace Rocketbox
         private decimal _valueFrom;
 
         private decimal _result;
+
+        public List<string> Keywords { get; } = new List<string> { "CONVERT", "CON", "CV" };
 
         internal UnitConversionCommand() { }
 

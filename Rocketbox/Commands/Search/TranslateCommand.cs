@@ -14,6 +14,8 @@ namespace Rocketbox
         private RbTranslateLanguage _toLang;
         private string _textToTranslate;
 
+        public List<string> Keywords { get; } = new List<string> { "TRANSLATE", "TRANS", "TR" };
+
         internal TranslateCommand()
         {
             _fromLang = null;

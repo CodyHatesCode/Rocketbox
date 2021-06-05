@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -7,6 +8,8 @@ namespace Rocketbox
     /// </summary>
     internal class TimeCompareCommand : IRbCommand
     {
+        public List<string> Keywords { get; } = new List<string> { "TS", "SINCE", "TU", "UNTIL" };
+
         public TimeCompareCommand() { }
 
         public string GetResponse(string arguments)

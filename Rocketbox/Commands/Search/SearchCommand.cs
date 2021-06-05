@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Rocketbox
@@ -9,6 +10,8 @@ namespace Rocketbox
     internal class SearchCommand : IRbCommand
     {
         private RbSearchEngine _engine;
+
+        public List<string> Keywords { get; } = new List<string>();
 
         // the search engine is determined by the Invoker and passed here
         internal SearchCommand(RbSearchEngine engine)

@@ -15,16 +15,16 @@ namespace Rocketbox
         private static string[] _allowedLocales = { "ca", "us", "uk" };
 
         // Master list of search engines
-        internal static List<RbSearchEngine> SearchEngines;
+        internal static List<RbSearchEngine> SearchEngines { get; private set; }
 
         // Master list of converter units
-        internal static List<RbConversionUnit> ConversionUnits;
+        internal static List<RbConversionUnit> ConversionUnits { get; private set; }
 
         // Master list of Google Translate languages
-        internal static List<RbTranslateLanguage> TranslateLanguages;
+        internal static List<RbTranslateLanguage> TranslateLanguages { get; private set; }
 
         // Master list of installed packages
-        internal static List<string> Packages;
+        internal static List<string> Packages { get; private set; }
 
         // The load state (for the UI thread)
         public static RbLoadState LoadState { get; private set; }

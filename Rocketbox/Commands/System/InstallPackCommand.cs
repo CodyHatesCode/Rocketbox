@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -11,6 +12,8 @@ namespace Rocketbox
 
         private bool _installAttempted = false;
         private bool _installSuccessful = false;
+
+        public List<string> Keywords { get; } = new List<string> { "INSTALL" };
 
         public InstallPackCommand() { }
 

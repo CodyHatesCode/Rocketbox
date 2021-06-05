@@ -50,6 +50,7 @@ namespace Rocketbox
             responseText.Text = string.Empty;
             textConsole.Text = string.Empty;
 
+            Invoker.RegisterCommands();
             Invoker.Invoke(textConsole.Text);
 
             // Event assignments:

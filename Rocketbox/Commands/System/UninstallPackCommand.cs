@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rocketbox
 {
@@ -9,6 +10,8 @@ namespace Rocketbox
     {
         private bool _packExists = false;
         private bool _uninstallSuccessful = false;
+
+        public List<string> Keywords { get; } = new List<string> { "UNINSTALL" };
 
         public UninstallPackCommand() { }
 

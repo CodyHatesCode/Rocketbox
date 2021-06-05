@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NCalc;
 
 namespace Rocketbox
@@ -9,6 +10,8 @@ namespace Rocketbox
     internal class CalculatorCommand : IRbCommand
     {
         private string _result;
+
+        public List<string> Keywords { get; } = new List<string> { "=" };
 
         internal CalculatorCommand()
         {
