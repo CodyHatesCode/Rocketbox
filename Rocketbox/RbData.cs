@@ -26,19 +26,32 @@ namespace Rocketbox
         // Master list of installed packages
         internal static List<string> Packages;
 
+        // The load state (for the UI thread)
+        public static RbLoadState LoadState { get; private set; }
+
         // Universal time/date format
         private static string _dateFmt = "dddd, MMMM d, yyyy  ―  h:mm tt";
         internal static string DateFormat { get { return _dateFmt; } }
 
-        private static bool isLoaded = false;
+        static RbData()
+        {
+            LoadState = RbLoadState.NotLoaded;
+        }
 
         /// <summary>
         /// Loads the Rocketbox database
         /// </summary>
         private static void LoadDatabase()
         {
-            // TODO: errors etc
-            _db = new LiteDatabase("Rocketbox.db");
+            if(!File.Exists("Rocketbox.db"))
+            {
+                LoadState = RbLoadState.Failed;
+                _db = new LiteDatabase("RocketboxFallback.db");
+            }
+            else
+            {
+                _db = new LiteDatabase("Rocketbox.db");
+            }
 
             // Tries to read the locale from a local file
             // If first run/file is broken, assume Canada
@@ -82,11 +95,14 @@ namespace Rocketbox
         /// </summary>
         internal static void LoadData()
         {
-            if(!isLoaded)
+            if(LoadState == RbLoadState.NotLoaded)
             {
                 LoadDatabase();
 
-                isLoaded = true;
+                if(LoadState != RbLoadState.Failed)
+                {
+                    LoadState = RbLoadState.Loaded;
+                }
             }
         }
 
@@ -167,7 +183,7 @@ namespace Rocketbox
 
             if(_db.GetCollection<RbSearchEngine>("searchengines").InsertBulk(newItems) != 0)
             {
-                isLoaded = false;
+                LoadState = RbLoadState.NotLoaded;
                 LoadData();
                 return true;
             }
@@ -199,7 +215,7 @@ namespace Rocketbox
                 }
             }
 
-            isLoaded = false;
+            LoadState = RbLoadState.NotLoaded;
             LoadData();
 
             return true;
@@ -273,5 +289,12 @@ namespace Rocketbox
         public string Name { get; set; }
         public string Code { get; set; }
         public string[] Keywords { get; set; }
+    }
+
+    internal enum RbLoadState
+    {
+        NotLoaded,
+        Loaded,
+        Failed
     }
 }

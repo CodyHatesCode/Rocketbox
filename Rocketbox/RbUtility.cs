@@ -8,8 +8,8 @@ namespace Rocketbox
         /// <summary>
         /// Constants used by the About dialog
         /// </summary>
-        internal const string RB_VERSION = "1.0.0";
-        internal const string RB_BUILD_DATE = "2021-05-30";
+        internal const string RB_VERSION = "1.0.1";
+        internal const string RB_BUILD_DATE = "2021-06-04";
 
         /// <summary>
         /// Gets the keyword from a command string

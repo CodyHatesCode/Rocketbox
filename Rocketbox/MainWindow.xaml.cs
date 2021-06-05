@@ -22,6 +22,11 @@ namespace Rocketbox
             InitializeComponent();
             RbData.LoadData();
 
+            if(RbData.LoadState == RbLoadState.Failed)
+            {
+                MessageBox.Show("The Rocketbox database is missing or inaccessible. Certain features may not work properly. It is recommended that you replace this copy of Rocketbox.", "Rocketbox", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             this.Width = System.Windows.SystemParameters.WorkArea.Width - 40;
             textConsole.Width = this.Width - 20;
             responseText.Width = this.Width - 64;
