@@ -24,10 +24,10 @@ namespace Rocketbox
         {
             InitializeComponent();
 
-            lblVersion.Content += string.Format("v{0} ({1})", RbUtility.RB_VERSION, RbUtility.RB_BUILD_DATE);
+            lblVersion.Content += string.Format("v{0} ({1})", RbGlobals.RB_VERSION, RbGlobals.RB_BUILD_DATE);
 
-            tbLicenseInfo.Text = File.ReadAllText("LICENSE");
-            tbThirdPartyLicenses.Text = File.ReadAllText("LICENSE-THIRD-PARTY");
+            tbLicenseInfo.Text = File.ReadAllText(RbGlobals.LICENSE_FILE_NAME);
+            tbThirdPartyLicenses.Text = File.ReadAllText(RbGlobals.THIRD_PARTY_LICENSE_FILE_NAME);
 
             lblLink.Click += (sender, args) => { new ShellCommand(lblLink.NavigateUri.ToString()).Execute(string.Empty); this.Close(); };
             this.KeyDown += (sender, args) => { if (args.Key == Key.Escape) this.Close(); };

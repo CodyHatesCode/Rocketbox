@@ -24,7 +24,7 @@ namespace Rocketbox
 
             if(RbData.LoadState == RbLoadState.Failed)
             {
-                MessageBox.Show("The Rocketbox database is missing or inaccessible. Certain features may not work properly. It is recommended that you replace this copy of Rocketbox.", "Rocketbox", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(RbGlobals.DB_LOAD_ERR_MSG, RbGlobals.APPLICATION_NAME, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             this.Width = System.Windows.SystemParameters.WorkArea.Width - 40;
@@ -32,10 +32,10 @@ namespace Rocketbox
             responseText.Width = this.Width - 64;
 
             _trayIcon = new System.Windows.Forms.NotifyIcon();
-            _trayIcon.Icon = new Icon(@"icons/rocket.ico");
+            _trayIcon.Icon = new Icon(RbGlobals.ASSET_DIR + RbGlobals.ICON_NAME);
             _trayIcon.Visible = true;
             _trayIcon.Click += (sender, e) => { this.Show(); };
-            _trayIcon.ShowBalloonTip(5000, "Rocketbox", "Rocketbox is now active. Press Win + ~ to open it.", System.Windows.Forms.ToolTipIcon.Info);
+            _trayIcon.ShowBalloonTip(5000, RbGlobals.APPLICATION_NAME, RbGlobals.LAUNCH_TOOLTIP_STRING, System.Windows.Forms.ToolTipIcon.Info);
 
             HotkeyManager.Current.AddOrReplace("ShowRb", Key.OemTilde, ModifierKeys.Windows, OnHotkey);
 
@@ -67,7 +67,7 @@ namespace Rocketbox
             {
                 if(RbUtility.IconExists(icon))
                 {
-                    iconView.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\icons\\" + icon));
+                    iconView.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\" + RbGlobals.ASSET_DIR + icon));
                 }
             }
             else

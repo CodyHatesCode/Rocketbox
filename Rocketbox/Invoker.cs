@@ -41,9 +41,7 @@ namespace Rocketbox
             _currentText = command;
 
             // first, test for search engines
-            var matchingSearchEngines = from engine in RbData.SearchEngines
-                                        where engine.Aliases.Contains(Keyword)
-                                        select engine;
+            var matchingSearchEngines = RbData.SearchEngines.Where(e => e.Aliases.Contains(Keyword));
 
             // if a search engine is found, change the command
             if (matchingSearchEngines.Count() != 0)

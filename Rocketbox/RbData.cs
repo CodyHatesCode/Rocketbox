@@ -29,10 +29,6 @@ namespace Rocketbox
         // The load state (for the UI thread)
         public static RbLoadState LoadState { get; private set; }
 
-        // Universal time/date format
-        private static string _dateFmt = "dddd, MMMM d, yyyy  ―  h:mm tt";
-        internal static string DateFormat { get { return _dateFmt; } }
-
         static RbData()
         {
             LoadState = RbLoadState.NotLoaded;
@@ -43,14 +39,14 @@ namespace Rocketbox
         /// </summary>
         private static void LoadDatabase()
         {
-            if(!File.Exists("Rocketbox.db"))
+            if(!File.Exists(RbGlobals.DB_FILE_NAME))
             {
                 LoadState = RbLoadState.Failed;
-                _db = new LiteDatabase("RocketboxFallback.db");
+                _db = new LiteDatabase(RbGlobals.DB_FAIL_FILE_NAME);
             }
             else
             {
-                _db = new LiteDatabase("Rocketbox.db");
+                _db = new LiteDatabase(RbGlobals.DB_FILE_NAME);
             }
 
             // Tries to read the locale from a local file
@@ -115,9 +111,7 @@ namespace Rocketbox
         {
             keyword = keyword.ToUpper();
 
-            var results = from unit in ConversionUnits
-                          where unit.Keywords.Contains(keyword)
-                          select unit;
+            var results = ConversionUnits.Where(u => u.Keywords.Contains(keyword));
 
             if(results.Count() > 0)
             {

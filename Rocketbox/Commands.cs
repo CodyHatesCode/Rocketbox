@@ -387,7 +387,7 @@ namespace Rocketbox
 
         public string GetResponse(string arguments)
         {
-            string timeStr = string.Format("Current date/time:   {0}", DateTime.Now.ToString(RbData.DateFormat));
+            string timeStr = string.Format("Current date/time:   {0}", DateTime.Now.ToString(RbGlobals.DateFormat));
 
             return timeStr;
         }
@@ -489,7 +489,7 @@ namespace Rocketbox
             {
                 if(!beforeCE)
                 {
-                    return string.Format("Calculated date/time:   {0}", calcDate.ToString(RbData.DateFormat));
+                    return string.Format("Calculated date/time:   {0}", calcDate.ToString(RbGlobals.DateFormat));
                 }
                 else
                 {
@@ -534,12 +534,12 @@ namespace Rocketbox
 
             if (dtToCompare > DateTime.Now)
             {
-                output = string.Format("Time until {0}:  ", dtToCompare.ToString(RbData.DateFormat));
+                output = string.Format("Time until {0}:  ", dtToCompare.ToString(RbGlobals.DateFormat));
                 diff = dtToCompare - DateTime.Now;
             }
             else
             {
-                output = string.Format("Time since {0}:  ", dtToCompare.ToString(RbData.DateFormat));
+                output = string.Format("Time since {0}:  ", dtToCompare.ToString(RbGlobals.DateFormat));
                 diff = DateTime.Now - dtToCompare;
             }
 
@@ -650,7 +650,7 @@ namespace Rocketbox
             try
             {
                 DateTimeOffset dt = DateTimeOffset.FromUnixTimeSeconds(_epochValue);
-                _dateString = "Local time:   " + dt.ToLocalTime().ToString(RbData.DateFormat);
+                _dateString = "Local time:   " + dt.ToLocalTime().ToString(RbGlobals.DateFormat);
             }
             catch(ArgumentOutOfRangeException)
             {
@@ -732,7 +732,7 @@ namespace Rocketbox
 
         public string GetIcon()
         {
-            return "rocket.ico";
+            return RbGlobals.ICON_NAME;
         }
     }
 
@@ -753,7 +753,7 @@ namespace Rocketbox
 
         public string GetIcon()
         {
-            return "rocket.ico";
+            return RbGlobals.ICON_NAME;
         }
     }
 

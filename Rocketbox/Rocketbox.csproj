@@ -79,6 +79,7 @@
     <Compile Include="Commands.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="RbData.cs" />
+    <Compile Include="RbGlobals.cs" />
     <Compile Include="RbUtility.cs" />
     <Compile Include="Invoker.cs" />
     <Page Include="AboutWindow.xaml">
