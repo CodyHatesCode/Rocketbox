@@ -24,9 +24,18 @@ namespace Rocketbox
 
             if(RbData.LoadState == RbLoadState.Failed)
             {
-                MessageBox.Show(RbGlobals.DB_LOAD_ERR_MSG, RbGlobals.APPLICATION_NAME, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult answer = MessageBox.Show(RbGlobals.DB_FIRST_LOAD_QUESTION, RbGlobals.APPLICATION_NAME, MessageBoxButton.YesNo);
+                if (answer == MessageBoxResult.Yes)
+                {
+                    RbData.GenerateDefaultDatabase();
+                    RbData.LoadData();
+                }
+                else
+                {
+                    MessageBox.Show(RbGlobals.DB_LOAD_ERR_MSG, RbGlobals.APPLICATION_NAME, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-
+            
             this.Width = System.Windows.SystemParameters.WorkArea.Width - 40;
             textConsole.Width = this.Width - 20;
             responseText.Width = this.Width - 64;

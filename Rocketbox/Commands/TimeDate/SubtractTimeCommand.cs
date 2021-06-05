@@ -30,7 +30,7 @@ namespace Rocketbox
                 {
                     if (beforeCEYear == -1)
                     {
-                        outString = string.Format(RbGlobals.DATE_CALC_OUT_STRING + "{0}", calcDate.ToString(RbGlobals.DateFormat));
+                        outString = string.Format(RbGlobals.DATE_CALC_OUT_STRING + "{0}", calcDate.ToString(RbGlobals.CALC_DATE_FORMAT));
                     }
                     else
                     {

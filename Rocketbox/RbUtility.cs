@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Rocketbox
@@ -134,6 +135,16 @@ namespace Rocketbox
             }
 
             return true;
+        }
+
+        internal static string GetEmbeddedStringResource(string resourceName)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(RbGlobals.APPLICATION_NAME + "." + resourceName));
+            string contents = reader.ReadToEnd();
+            reader.Close();
+
+            return contents;
         }
     }
 }

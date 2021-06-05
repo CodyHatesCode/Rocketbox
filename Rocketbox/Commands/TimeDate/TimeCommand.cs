@@ -14,7 +14,7 @@ namespace Rocketbox
 
         public string GetResponse(string arguments)
         {
-            string timeStr = string.Format("Current date/time:   {0}", DateTime.Now.ToString(RbGlobals.DateFormat));
+            string timeStr = string.Format("Current date/time:   {0}", DateTime.Now.ToString(RbGlobals.CALC_DATE_FORMAT));
 
             return timeStr;
         }

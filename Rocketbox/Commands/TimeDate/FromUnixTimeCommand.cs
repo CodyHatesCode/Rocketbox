@@ -42,7 +42,7 @@ namespace Rocketbox
             try
             {
                 DateTimeOffset dt = DateTimeOffset.FromUnixTimeSeconds(_epochValue);
-                _dateString = "Local time:   " + dt.ToLocalTime().ToString(RbGlobals.DateFormat);
+                _dateString = "Local time:   " + dt.ToLocalTime().ToString(RbGlobals.CALC_DATE_FORMAT);
             }
             catch (ArgumentOutOfRangeException)
             {

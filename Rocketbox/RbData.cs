@@ -51,9 +51,9 @@ namespace Rocketbox
 
             // Tries to read the locale from a local file
             // If first run/file is broken, assume Canada
-            if(File.Exists("locale"))
+            if(File.Exists(RbGlobals.LOCALE_FILE))
             {
-                string localeFileText = File.ReadAllText("locale").Trim().ToLower();
+                string localeFileText = File.ReadAllText(RbGlobals.LOCALE_FILE).Trim().ToLower();
                 if(_allowedLocales.Contains(localeFileText))
                 {
                     _locale = localeFileText;
@@ -65,15 +65,15 @@ namespace Rocketbox
             }
             else
             {
-                File.WriteAllText("locale", "ca");
+                File.WriteAllText(RbGlobals.LOCALE_FILE, "ca");
                 _locale = "ca";
             }
 
-            SearchEngines = _db.GetCollection<RbSearchEngine>("searchengines_" + _locale).FindAll().ToList<RbSearchEngine>();
-            SearchEngines.AddRange(_db.GetCollection<RbSearchEngine>("searchengines").FindAll().ToList<RbSearchEngine>());
+            SearchEngines = _db.GetCollection<RbSearchEngine>(RbGlobals.TABLE_SEARCH_ENGINES + "_" + _locale).FindAll().ToList<RbSearchEngine>();
+            SearchEngines.AddRange(_db.GetCollection<RbSearchEngine>(RbGlobals.TABLE_SEARCH_ENGINES).FindAll().ToList<RbSearchEngine>());
 
-            ConversionUnits = _db.GetCollection<RbConversionUnit>("conversionunits").FindAll().ToList<RbConversionUnit>();
-            TranslateLanguages = _db.GetCollection<RbTranslateLanguage>("languages").FindAll().ToList<RbTranslateLanguage>();
+            ConversionUnits = _db.GetCollection<RbConversionUnit>(RbGlobals.TABLE_CONVERSION_UNITS).FindAll().ToList<RbConversionUnit>();
+            TranslateLanguages = _db.GetCollection<RbTranslateLanguage>(RbGlobals.TABLE_LANGUAGES).FindAll().ToList<RbTranslateLanguage>();
 
             Packages = new List<string>();
 
@@ -95,9 +95,15 @@ namespace Rocketbox
             {
                 LoadDatabase();
 
+                if(GetDbVersion() != RbGlobals.RB_VERSION)
+                {
+                    UpdateDatabase(GetDbVersion());
+                }
+
                 if(LoadState != RbLoadState.Failed)
                 {
                     LoadState = RbLoadState.Loaded;
+                    UpdateLoadedDate();
                 }
             }
         }
@@ -126,6 +132,106 @@ namespace Rocketbox
         // ------------------------------------
         // Database modification
         // ------------------------------------
+
+        /// <summary>
+        /// Generates the default database for Rocketbox
+        /// </summary>
+        internal static void GenerateDefaultDatabase()
+        {
+            LoadState = RbLoadState.NotLoaded;
+
+            if(File.Exists(RbGlobals.DB_FILE_NAME))
+            {
+                File.Delete(RbGlobals.DB_FILE_NAME);
+            }
+            
+            _db = new LiteDatabase(RbGlobals.DB_FILE_NAME);
+            
+            // create system keys
+            
+            RbSystemKeyVal versionKeyVal = new RbSystemKeyVal() { ConfigKey = RbGlobals.SYSTEM_KEY_VERSION, ConfigVal = RbGlobals.RB_VERSION };
+            _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Insert(versionKeyVal);
+
+            RbSystemKeyVal createdKeyVal = new RbSystemKeyVal() { ConfigKey = RbGlobals.SYSTEM_KEY_CREATED, ConfigVal = DateTime.Now.ToString(RbGlobals.SHORT_DATE_FORMAT) };
+            _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Insert(createdKeyVal);
+
+            UpdateLoadedDate();
+
+            _db.GetCollection(RbGlobals.TABLE_SEARCH_ENGINES).InsertBulk(JsonSerializer.DeserializeArray(RbUtility.GetEmbeddedStringResource("DefaultData.DefaultSearchEngines.json")).Select(b => b.AsDocument));
+
+            foreach (string locale in _allowedLocales)
+            {
+                _db.GetCollection(RbGlobals.TABLE_SEARCH_ENGINES + "_" + locale).InsertBulk(JsonSerializer.DeserializeArray(RbUtility.GetEmbeddedStringResource("DefaultData.DefaultSearchEngines_" + locale + ".json")).Select(b => b.AsDocument));
+            }
+
+            _db.GetCollection(RbGlobals.TABLE_CONVERSION_UNITS).InsertBulk(JsonSerializer.DeserializeArray(RbUtility.GetEmbeddedStringResource("DefaultData.DefaultConversionUnits.json")).Select(b => b.AsDocument));
+            _db.GetCollection(RbGlobals.TABLE_LANGUAGES).InsertBulk(JsonSerializer.DeserializeArray(RbUtility.GetEmbeddedStringResource("DefaultData.DefaultLanguages.json")).Select(b => b.AsDocument));
+        }
+
+        /// <summary>
+        /// Gets the version number from an existing Rocketbox database.
+        /// </summary>
+        /// <returns>The version of Rocketbox last used with this database</returns>
+        internal static string GetDbVersion()
+        {
+            if (_db.CollectionExists(RbGlobals.TABLE_SYSTEM) && _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Exists(k => k.ConfigKey == RbGlobals.SYSTEM_KEY_VERSION))
+            {
+                return _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).FindOne(k => k.ConfigKey == "version").ConfigVal;
+            }
+            else
+            {
+                // version 1.0.x does not have this table
+                return "1.0.x";
+            }
+        }
+
+        /// <summary>
+        /// Updates the Rocketbox database to the latest version
+        /// </summary>
+        /// <param name="previousVersion">The version string of the version being updated from</param>
+        /// <returns>Whether the update was successful</returns>
+        internal static bool UpdateDatabase(string previousVersion)
+        {
+            // placeholder for future use - no significant updates have been made to DB schema
+
+            bool success = true;
+
+            switch(previousVersion)
+            {
+                case "1.0.x":
+                    // changes from 1.0.x: added system table with version key
+                    _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Insert(new RbSystemKeyVal() { ConfigKey = RbGlobals.SYSTEM_KEY_VERSION, ConfigVal = RbGlobals.RB_VERSION });
+                    break;
+            }
+
+            if(previousVersion != "1.0.x")
+            {
+                RbSystemKeyVal verKey = _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).FindOne(k => k.ConfigKey == RbGlobals.SYSTEM_KEY_VERSION);
+                verKey.ConfigVal = RbGlobals.RB_VERSION;
+                _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Update(verKey);
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Updates the "loaded" key in the system table to the present day
+        /// </summary>
+        internal static void UpdateLoadedDate()
+        {
+            RbSystemKeyVal loadedKey;
+            if(_db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Exists(k => k.ConfigKey == RbGlobals.SYSTEM_KEY_LOADED))
+            {
+                loadedKey = _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).FindOne(k => k.ConfigKey == RbGlobals.SYSTEM_KEY_LOADED);
+                loadedKey.ConfigVal = DateTime.Now.ToString(RbGlobals.SHORT_DATE_FORMAT);
+                _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Update(loadedKey);
+            }
+            else
+            {
+                loadedKey = new RbSystemKeyVal() { ConfigKey = RbGlobals.SYSTEM_KEY_LOADED, ConfigVal = DateTime.Now.ToString(RbGlobals.SHORT_DATE_FORMAT) };
+                _db.GetCollection<RbSystemKeyVal>(RbGlobals.TABLE_SYSTEM).Insert(loadedKey);
+            }
+        }
 
         /// <summary>
         /// Attempts to install a search engine pack
@@ -175,7 +281,7 @@ namespace Rocketbox
                 newItems.Add(thisEngine);
             }
 
-            if(_db.GetCollection<RbSearchEngine>("searchengines").InsertBulk(newItems) != 0)
+            if(_db.GetCollection<RbSearchEngine>(RbGlobals.TABLE_SEARCH_ENGINES).InsertBulk(newItems) != 0)
             {
                 LoadState = RbLoadState.NotLoaded;
                 LoadData();
@@ -232,6 +338,8 @@ namespace Rocketbox
         }
     }
 
+
+
     /// <summary>
     /// Bundles information for a certain search engine
     /// </summary>
@@ -283,6 +391,18 @@ namespace Rocketbox
         public string Name { get; set; }
         public string Code { get; set; }
         public string[] Keywords { get; set; }
+    }
+
+    /// <summary>
+    /// Data type for configuration keys in Rocketbox database
+    /// </summary>
+    internal class RbSystemKeyVal
+    {
+        [BsonId]
+        public ObjectId Id { get; set; }
+
+        public string ConfigKey { get; set; }
+        public string ConfigVal { get; set; }
     }
 
     internal enum RbLoadState

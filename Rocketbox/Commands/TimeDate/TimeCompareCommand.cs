@@ -29,12 +29,12 @@ namespace Rocketbox
 
             if (dtToCompare > DateTime.Now)
             {
-                output = string.Format("Time until {0}:  ", dtToCompare.ToString(RbGlobals.DateFormat));
+                output = string.Format("Time until {0}:  ", dtToCompare.ToString(RbGlobals.CALC_DATE_FORMAT));
                 diff = dtToCompare - DateTime.Now;
             }
             else
             {
-                output = string.Format("Time since {0}:  ", dtToCompare.ToString(RbGlobals.DateFormat));
+                output = string.Format("Time since {0}:  ", dtToCompare.ToString(RbGlobals.CALC_DATE_FORMAT));
                 diff = DateTime.Now - dtToCompare;
             }
 

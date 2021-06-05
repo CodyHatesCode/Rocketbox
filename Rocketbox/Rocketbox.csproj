@@ -136,12 +136,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DefaultData\DefaultConversionUnits.json" />
-    <None Include="DefaultData\DefaultLanguages.json" />
-    <None Include="DefaultData\DefaultSearchEngines_uk.json" />
-    <None Include="DefaultData\DefaultSearchEngines_us.json" />
-    <None Include="DefaultData\DefaultSearchEngines_ca.json" />
-    <None Include="DefaultData\DefaultSearchEngines.json" />
+    <EmbeddedResource Include="DefaultData\DefaultConversionUnits.json" />
+    <EmbeddedResource Include="DefaultData\DefaultLanguages.json" />
+    <EmbeddedResource Include="DefaultData\DefaultSearchEngines_uk.json" />
+    <EmbeddedResource Include="DefaultData\DefaultSearchEngines_us.json" />
+    <EmbeddedResource Include="DefaultData\DefaultSearchEngines_ca.json" />
+    <EmbeddedResource Include="DefaultData\DefaultSearchEngines.json" />
     <None Include="LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -151,9 +151,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Rocketbox.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
